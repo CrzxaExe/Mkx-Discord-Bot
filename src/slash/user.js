@@ -2,17 +2,18 @@ import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
 
 export const run = async (client, { interaction, options }) => {
   let user = await interaction.guild.members.fetch(options.getUser("target"));
-  let pp = new EmbedBuilder()
-     .setTitle(`${user.nickname || user.user.globalName}'s Photo Profile`)
-     .setDescription("Nih")
+  console.log(user)
+  let data = new EmbedBuilder()
+     .setTitle(`${user.nickname || user.user.globalName}`)
+     .setDescription(`Bot ${user.user.bot}`)
      .setImage(user.displayAvatarURL({ size: 4096, format: "png" }))
 
-  await interaction.reply({ embeds: [pp] })
+  await interaction.reply({ embeds: [data] })
 };
 
 export const config = {
-  name: "pp",
-  description: "Mengambil photo profile seseorang",
+  name: "user",
+  description: "Mengambil data dari target",
   options: [
     {
       name: "target",
