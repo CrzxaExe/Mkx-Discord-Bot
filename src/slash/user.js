@@ -2,7 +2,7 @@ import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
 
 export const run = async (client, { interaction, options }) => {
   let user = await interaction.guild.members.fetch(options.getUser("target"));
-  console.log(user)
+  // console.log(user)
   let data = new EmbedBuilder()
      .setTitle(`${user.nickname || user.user.globalName}`)
      .setDescription(`Bot ${user.user.bot}`)
