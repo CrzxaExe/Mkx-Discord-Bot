@@ -8,12 +8,12 @@ async function load (dir) {
   try {
     let files = await fs.readdir(dir);
     let out = [];
-    
+
     for(const file of files) {
       let mod = await import(`${dir}/${file}`);
       out.push({ ...mod.config })
     }
-    
+
     return out
   } catch(err) { console.log(err) }
 }

@@ -25,6 +25,7 @@ process.on('unhandledRejection', (reason, promise) => {
   console.error('[System] Unhandled Rejection =>', reason);
 });
 
+// Registering Slash Commands
 (async () => {
   await import("./slashRegister.js")
 })();

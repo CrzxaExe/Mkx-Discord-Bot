@@ -7,12 +7,15 @@ export default async function (client, message) {
       args = rawContent.slice(2),
       msg = message.channel;
 
-  if(!message.guild) return;
+  if(!message.guild)
+    return;
 
   let prefix = "mkx";
 
-  if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`))) return msg.send(`Gunakan mkx <command>`);
-  if(key.toString().toLowerCase() !== prefix || !cmd) return
+  if(message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`)))
+    return msg.send(`Gunakan mkx <command>`);
+  if(key.toString().toLowerCase() !== prefix || !cmd)
+    return
 
   let command = client.commands.get(cmd.toString().toLowerCase()) || client.commands.get(client.aliases.get(cmd.toString().toLowerCase()))
 
