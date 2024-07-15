@@ -1,6 +1,13 @@
 export default async function (client, message) {
   if(message.author.bot || message.channel.type === "dm") return;
 
+  /*
+  * @rawContent: message text has been splited
+  * @key       : first word in message, prefix check
+  * @cmd       : second word message, using to call command name
+  * @args      : rawMessage but slice(no key & cmd)
+  * @msg       : channel object
+  */
   let rawContent = message.content.split(" "),
       key = rawContent[0],
       cmd = rawContent[1],
