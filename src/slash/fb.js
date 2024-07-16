@@ -13,7 +13,7 @@ export const run = async (client, { interaction, options }) => {
 
     if(res.data.result.Title === '') return await interaction.editReply("Video tidak dapat diambil");
 
-    await interaction.editReply(res.data.result.HD ? "Video didapatkan, link: "+res.data.result.HD : res.data.result.SD)
+    await interaction.editReply(res.data.result.HD ? "Video didapatkan, link: "+res.data.result.HD : "Video didapatkan, link:: "+res.data?.result?.SD)
   } catch(err) {
     await interaction.editReply("Tidak dapat mengambil link anda");
     console.error(err);
