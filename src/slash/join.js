@@ -1,8 +1,12 @@
 import { ApplicationCommandOptionType } from 'discord.js';
-import { joinVoiceChannel } from '@discordjs/voice';
+import { joinVoiceChannel,  getVoiceConnection } from '@discordjs/voice';
 
 export const run = async (client, { interaction, options }) => {
-  const voiceChannel = (options.getChannel("channel"))?.id || interaction.member.voice.channelId
+  const prevConnection = getVoiceConnection(interaction.guild.id);
+
+  if (prevConnection) prevConnection.destroy();
+
+  const voiceChannel = options.getChannel("channel")?.id || interaction.member.voice?.channel?.id;
 
   if (!voiceChannel) return await interaction.reply({ content: "Kamu harus join voice channel dulu", ephemeral: true });
   const connection = await joinVoiceChannel({

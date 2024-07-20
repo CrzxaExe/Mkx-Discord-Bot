@@ -10,7 +10,7 @@ export const run = async (client, { interaction, options }) => {
     interaction.reply("Fetching data ke gemini")
     let prompt = options.get("query"), res = await model.generateContent(prompt.value)
 
-    console.log(prompt)
+    // console.log(prompt)
     await interaction.editReply(res.response.text())
   } catch(err) { console.log(err) }
 };
