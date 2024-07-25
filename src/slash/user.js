@@ -1,21 +1,23 @@
-import { ApplicationCommandOptionType, EmbedBuilder } from 'discord.js';
+import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 
 export const run = async (client, { interaction, options }) => {
-  let user = await interaction.guild.members.fetch(options.getUser("target"));
+  const user = await interaction.guild.members.fetch(options.getUser("target"));
 
-  console.log(user.guild.roles)
-  
-  let data = new EmbedBuilder()
-     .setTitle(`${user.nickname || user.user.globalName}`)
-     .setDescription(`
+  console.table(user.guild.roles);
+
+  const data = new EmbedBuilder()
+    .setTitle(`${user.nickname || user.user.globalName}`)
+    .setDescription(
+      `
         ID ${user.user.id}
         Bot ${user.user.bot}
         Role ${user.guild.roles}
-      `)
-     .setTimestamp(user.guild.joinedTimestamp)
-     .setImage(user.displayAvatarURL({ size: 4096, format: "png" }))
+      `
+    )
+    .setTimestamp(user.guild.joinedTimestamp)
+    .setImage(user.displayAvatarURL({ size: 4096, format: "png" }));
 
-  await interaction.reply({ embeds: [data] })
+  await interaction.reply({ embeds: [data] });
 };
 
 export const config = {
@@ -26,7 +28,7 @@ export const config = {
       name: "target",
       description: "Target yang akan diambil",
       type: ApplicationCommandOptionType.User,
-      required: true
-    }
-  ]
+      required: true,
+    },
+  ],
 };
