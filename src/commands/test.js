@@ -1,8 +1,9 @@
 export const run = (client, { msg }) => {
-  msg.send("Test")
+  msg.send("Test");
 };
 
 export const config = {
   name: "test",
-  alias: []
+  des: "Testing command",
+  alias: [],
 };

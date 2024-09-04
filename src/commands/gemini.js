@@ -1,20 +1,22 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
 
 export const run = async (client, { msg, args }) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    let prompt = args.join(" "), res = await model.generateContent(prompt)
-    
-    msg.send(res.response.text())
-  } catch(err) {
-    msg.send(err);
+    let prompt = args.join(" "),
+      res = await model.generateContent(prompt);
+
+    msg.send(res.response.text());
+  } catch (err) {
+    msg.send(JSON.stringify(err));
   }
 };
 
 export const config = {
   name: "gemini",
-  alias: []
+  des: "Bertanya dengan gemini AI",
+  alias: [],
 };
