@@ -1,14 +1,21 @@
-export const run = (client, { msg }) => {
-  msg.send(
-    `Daftar command yang tersedia:${[...client.commands.keys()]
-      .sort((a, b) => a.localeCompare(b))
-      .map((e, i) => {
-        let ob = client.commands.get(e).config;
+import { EmbedBuilder } from "discord.js";
 
-        return `\n~ ${e} - ${ob.des ? ob.des : ""}`;
-      })
-      .join("")}`
-  );
+export const run = (client, { msg }) => {
+  let emb = new EmbedBuilder()
+    .setTitle("Daftar Perintah")
+    .setDescription(
+      `${[...client.commands.keys()]
+        .sort((a, b) => a.localeCompare(b))
+        .map((e) => {
+          let ob = client.commands.get(e).config;
+
+          return `\n~ ${e} - ${ob.des ? ob.des : ""}`;
+        })
+        .join("")}`
+    )
+    .setFooter({ text: "MKx" });
+
+  msg.send({ embeds: [emb] });
 };
 
 export const config = {
