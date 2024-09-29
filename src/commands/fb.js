@@ -3,7 +3,7 @@ import { EmbedBuilder } from "discord.js";
 
 export const run = async (client, { msg, args }) => {
   try {
-    console.log(args[0]);
+    // console.log(args[0]);
     let res = await axios.post(process.env.REST + "fbdl", {
       link: args[0],
     });

@@ -1,11 +1,13 @@
-import { Client, Collection, GatewayIntentBits } from 'discord.js';
-import loadEvents from './utils/loadEvents.js';
+import { Client, Collection, GatewayIntentBits } from "discord.js";
+import mongoose from "mongoose";
+
+import loadEvents from "./utils/loadEvents.js";
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Main File Process
 export default class AppClient extends Client {
   constructor(opt) {
-    super(opt)
+    super(opt);
 
     this.commands = new Collection();
     this.aliases = new Collection();
@@ -17,9 +19,21 @@ export default class AppClient extends Client {
     this.events = new loadEvents(this);
     this.events.init();
 
+    // Connect to mongodb, please check your database
+    mongoose
+      .connect(process.env.MONGODB)
+      .then((connected) => console.log("[System] Connected to Database")),
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: true,
+      };
+
+    // Client Side
     // Command & slash command loader
-    (await import('./utils/loadCommands.js')).default(this);
-    (await import('./utils/loadInteraction.js')).default(this);
+
+    (await import("./utils/loadCommands.js")).default(this);
+    (await import("./utils/loadInteraction.js")).default(this);
 
     // Login to discord bot process.env.BOT_TOKEN<token>
     this.login(process.env.BOT_TOKEN);
