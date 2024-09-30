@@ -17,9 +17,9 @@ export default async function (client, oldMessage, newMessage) {
         newMessage.author.globalName
           ? newMessage.author.globalName
           : newMessage.author.username
-      }\n\nServer ${newMessage.guild.name}\nChannel @${
+      }\n\nServer ${newMessage.guild.name}\nChannel <#${
         newMessage.channelId
-      }\nSebelum: ${oldMessage.content}\nSesudah: ${newMessage.content}`
+      }>\n\nSebelum: ${oldMessage.content}\nSesudah: ${newMessage.content}`
     )
     .setFooter({ text: "MKx" });
 

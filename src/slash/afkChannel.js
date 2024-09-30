@@ -13,19 +13,19 @@ export const run = async (client, { interaction, options }) => {
       let gd = await client.guilds.fetch(interaction.guild.id),
         channel = await gd.channels.cache.get(interaction.channel.id);
 
-      updateGuild(interaction.guild.id, { modChannel: channel.id });
+      updateGuild(interaction.guild.id, { afkChannel: channel.id });
 
       emb
-        .setTitle("Set Mod Channel")
-        .setDescription(`Set moderator channel di @${channel.id}`)
+        .setTitle("Set Afk Channel")
+        .setDescription(`Set afk channel di @${channel.id}`)
         .setFooter({ text: "MKx" });
       break;
     case 1:
-      updateGuild(interaction.guild.id, { modChannel: "" });
+      updateGuild(interaction.guild.id, { afkChannel: "" });
 
       emb
-        .setTitle("Delete Mod Channel")
-        .setDescription(`Menghapus moderator channel`)
+        .setTitle("Delete Afk Channel")
+        .setDescription(`Menghapus afk channel`)
         .setFooter({ text: "MKx" });
       break;
 
@@ -33,8 +33,8 @@ export const run = async (client, { interaction, options }) => {
       emb
         .setTitle(interaction.guild.name)
         .setDescription(
-          `Moderation channel: ${
-            guild.modChannel ? "@" + guild.modChannel : "Belum di atur"
+          `Afk channel: ${
+            guild.afkChannel ? "@" + guild.afkChannel : "Belum di atur"
           }`
         )
         .setFooter({ text: "MKx" });
@@ -45,8 +45,8 @@ export const run = async (client, { interaction, options }) => {
 };
 
 export const config = {
-  name: "modchannel",
-  description: "Setup channel moderator server",
+  name: "afkchannel",
+  description: "Setup channel afk server",
   mod: true,
   options: [
     {
@@ -55,11 +55,11 @@ export const config = {
       type: ApplicationCommandOptionType.Integer,
       choices: [
         {
-          name: "Atur channel ini menjadi moderator channel",
+          name: "Atur channel ini menjadi afk channel",
           value: 0,
         },
         {
-          name: "Hapus channel moderator",
+          name: "Hapus channel afk",
           value: 1,
         },
       ],

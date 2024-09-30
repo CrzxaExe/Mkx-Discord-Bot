@@ -13,19 +13,19 @@ export const run = async (client, { interaction, options }) => {
       let gd = await client.guilds.fetch(interaction.guild.id),
         channel = await gd.channels.cache.get(interaction.channel.id);
 
-      updateGuild(interaction.guild.id, { modChannel: channel.id });
+      updateGuild(interaction.guild.id, { greetChannel: channel.id });
 
       emb
-        .setTitle("Set Mod Channel")
-        .setDescription(`Set moderator channel di @${channel.id}`)
+        .setTitle("Set Greet Channel")
+        .setDescription(`Set channel sambutan di @${channel.id}`)
         .setFooter({ text: "MKx" });
       break;
     case 1:
-      updateGuild(interaction.guild.id, { modChannel: "" });
+      updateGuild(interaction.guild.id, { greetChannel: "" });
 
       emb
-        .setTitle("Delete Mod Channel")
-        .setDescription(`Menghapus moderator channel`)
+        .setTitle("Delete Greet Channel")
+        .setDescription(`Menghapus channel sambutan`)
         .setFooter({ text: "MKx" });
       break;
 
@@ -33,8 +33,8 @@ export const run = async (client, { interaction, options }) => {
       emb
         .setTitle(interaction.guild.name)
         .setDescription(
-          `Moderation channel: ${
-            guild.modChannel ? "@" + guild.modChannel : "Belum di atur"
+          `Greet channel: ${
+            guild.greetChannel ? "@" + guild.greetChannel : "Belum di atur"
           }`
         )
         .setFooter({ text: "MKx" });
@@ -45,8 +45,8 @@ export const run = async (client, { interaction, options }) => {
 };
 
 export const config = {
-  name: "modchannel",
-  description: "Setup channel moderator server",
+  name: "greetchannel",
+  description: "Setup channel sambutan server",
   mod: true,
   options: [
     {
@@ -55,11 +55,11 @@ export const config = {
       type: ApplicationCommandOptionType.Integer,
       choices: [
         {
-          name: "Atur channel ini menjadi moderator channel",
+          name: "Atur channel ini menjadi channel sambutan",
           value: 0,
         },
         {
-          name: "Hapus channel moderator",
+          name: "Hapus channel sambutan",
           value: 1,
         },
       ],
