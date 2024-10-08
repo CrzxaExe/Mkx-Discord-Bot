@@ -42,6 +42,7 @@ export default async function (client, message) {
   // Run command if the command exits
   if (command) {
     if (
+      // (message.author.id !== process.env.OWNER_ID && command.config.owner) ||
       !user?.permissions.has(PermissionFlagsBits.Administrator) &&
       command.config.mod
     )

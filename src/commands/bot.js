@@ -1,15 +1,15 @@
 import {
-  EmbedBuilder,
+  ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
-  ActionRowBuilder,
+  EmbedBuilder,
 } from "discord.js";
 import pks from "../../package.json";
 import { findGuild } from "../utils/guild";
 import ms from "pretty-ms";
 
-export const run = async (client, { interaction }) => {
-  let guild = await findGuild(interaction.guild.id);
+export const run = async (client, { msg, message }) => {
+  let guild = await findGuild(message.guild.id);
 
   let emb = new EmbedBuilder()
     .setTitle(
@@ -35,10 +35,11 @@ export const run = async (client, { interaction }) => {
 
   const action = new ActionRowBuilder().addComponents(invButton);
 
-  interaction.reply({ embeds: [emb], components: [action] });
+  msg.send({ embeds: [emb], components: [action] });
 };
 
 export const config = {
   name: "bot",
-  description: "Status bot",
+  des: "Bot status",
+  alias: [],
 };

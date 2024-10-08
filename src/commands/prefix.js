@@ -17,5 +17,6 @@ export const config = {
   name: "prefix",
   des: "Ubah prefix sesuka anda",
   mod: true,
+  owner: true,
   alias: [],
 };

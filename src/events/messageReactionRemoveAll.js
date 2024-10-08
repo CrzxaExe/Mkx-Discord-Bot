@@ -1,9 +1,8 @@
 import { EmbedBuilder } from "discord.js";
 import { findGuild } from "../utils/guild";
 
-export default async function (client, oldMessage, newMessage) {
-  // Find guild in database
-  let guild = await findGuild(newMessage.guild.id);
+export default async function (client, message) {
+  let guild = await findGuild(message.guild.id); // Find guild in database
 
   if (!guild?.modChannel) return; // If there is no moderator channel id in database, not will send anything
 
@@ -13,15 +12,15 @@ export default async function (client, oldMessage, newMessage) {
 
   // Embed message
   const emb = new EmbedBuilder()
-    .setTitle("Pesan Berubah")
+    .setTitle("Semua reaksi pesan dihapus")
     .setDescription(
       `User ${
-        newMessage.author.globalName
-          ? newMessage.author.globalName
-          : newMessage.author.username
-      }\n\nServer ${newMessage.guild.name}\nChannel <#${
-        newMessage.channelId
-      }>\n\nSebelum: ${oldMessage.content}\nSesudah: ${newMessage.content}`
+        message.author.globalName
+          ? message.author.globalName
+          : message.author.username
+      }\n\nServer ${message.guild.name}\nChannel <#${
+        message.channel.id
+      }>\n\nContent: ${message.content}`
     )
     .setFooter({ text: "MKx" });
 

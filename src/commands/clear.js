@@ -12,5 +12,6 @@ export const run = async (client, { msg, args }) => {
 export const config = {
   name: "clear",
   des: "Membersihkan chat di dalam channel",
+  mod: true,
   alias: [],
 };

@@ -8,6 +8,8 @@ export default async function (client, message) {
 
   const channel = await client.channels.fetch(guild.modChannel);
 
+  if (!channel) return;
+
   // Embed message
   const emb = new EmbedBuilder()
     .setTitle("Pesan Dihapus")
