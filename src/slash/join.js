@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, ChannelType } from "discord.js";
+import { ApplicationCommandOptionType } from "discord.js";
 import { joinVoiceChannel, getVoiceConnection } from "@discordjs/voice";
 
 export const run = async (client, { interaction, options }) => {

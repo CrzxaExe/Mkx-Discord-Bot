@@ -1,4 +1,3 @@
-import { ApplicationCommandOptionType } from "discord.js";
 import { findGuild } from "../utils/guild";
 
 export const run = async (client, { interaction }) => {

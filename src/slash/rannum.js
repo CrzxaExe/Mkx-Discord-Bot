@@ -4,8 +4,6 @@ export const run = (client, { interaction, options }) => {
   let max = options.getInteger("max") || 0,
     min = options.getInteger("min") || 0;
 
-  console.log(min, max);
-
   let emb = new EmbedBuilder()
     .setTitle("Random Number Generator")
     .setDescription(
