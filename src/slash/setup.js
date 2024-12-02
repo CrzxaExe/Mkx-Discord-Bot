@@ -1,7 +1,7 @@
 import { findGuild } from "../utils/guild";
 
 export const run = async (client, { interaction }) => {
-  let guild = await findGuild(interaction.guild.id);
+  const guild = await findGuild(interaction.guild.id);
 
   interaction.reply("Server telah disetting");
 };

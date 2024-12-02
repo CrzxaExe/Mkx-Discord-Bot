@@ -2,15 +2,14 @@ import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 import { findGuild, updateGuild } from "../utils/guild";
 
 export const run = async (client, { interaction, options }) => {
-  let guild = await findGuild(interaction.guild.id);
-
-  let act = options.get("query");
+  const guild = await findGuild(interaction.guild.id),
+    act = options.get("query");
 
   let emb = new EmbedBuilder();
 
   switch (act?.value) {
     case 0:
-      let gd = await client.guilds.fetch(interaction.guild.id),
+      const gd = await client.guilds.fetch(interaction.guild.id),
         channel = await gd.channels.cache.get(interaction.channel.id);
 
       updateGuild(interaction.guild.id, { modChannel: channel.id });

@@ -9,7 +9,7 @@ import { findGuild } from "../utils/guild";
 import ms from "pretty-ms";
 
 export const run = async (client, { msg, message }) => {
-  let guild = await findGuild(message.guild.id);
+  const guild = await findGuild(message.guild.id);
 
   let emb = new EmbedBuilder()
     .setTitle(

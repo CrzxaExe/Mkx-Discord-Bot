@@ -2,7 +2,7 @@ import { EmbedBuilder } from "discord.js";
 import { findGuild } from "../utils/guild";
 
 export default async function (client, message) {
-  let guild = await findGuild(message.guild.id); // Find guild in database
+  const guild = await findGuild(message.guild.id); // Find guild in database
 
   if (!guild?.modChannel) return; // If there is no moderator channel id in database, not will send anything
 

@@ -3,16 +3,16 @@ import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 export const run = async (client, { interaction, options }) => {
   const user = await interaction.guild.members.fetch(options.getUser("target"));
 
-  console.log([...Object.keys(user.guild.roles.guild.roles)]);
+  console.log(user.roles.cache.map((e) => e.name));
 
   const data = new EmbedBuilder()
     .setTitle(`${user.nickname || user.user.globalName}`)
     .setDescription(
       `
-ID ${user.user.id}
-Bot ${user.user.bot}
-Role ${user.guild.roles}
-      `
+        ID ${user.user.id}
+        Bot ${user.user.bot}
+        Role ${user.roles.cache.map((e) => `<@&${e.id}>`).join(", ")}
+      `.trim()
     )
     .setTimestamp(user.guild.joinedTimestamp)
     .setImage(user.displayAvatarURL({ size: 4096, format: "png" }));

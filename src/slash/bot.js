@@ -9,9 +9,9 @@ import { findGuild } from "../utils/guild";
 import ms from "pretty-ms";
 
 export const run = async (client, { interaction }) => {
-  let guild = await findGuild(interaction.guild.id);
+  const guild = await findGuild(interaction.guild.id);
 
-  let emb = new EmbedBuilder()
+  const emb = new EmbedBuilder()
     .setTitle(
       client.user.globalName ? client.user.globalName : client.user.username
     )

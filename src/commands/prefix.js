@@ -6,7 +6,7 @@ export const run = async (client, { msg, message, args, user }) => {
 
   await updateGuild(message.guild.id, { prefix });
 
-  let emb = new EmbedBuilder()
+  const emb = new EmbedBuilder()
     .setTitle("Custom Prefix")
     .setDescription(`Mengubah prefix menjadi ${prefix}`)
     .setFooter({ text: "MKx" });

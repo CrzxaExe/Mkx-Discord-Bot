@@ -12,7 +12,7 @@ export default async function (client, message) {
    * @args      : rawMessage but slice(no key & cmd)
    * @msg       : channel object
    */
-  let rawContent = message.content.split(" "),
+  const rawContent = message.content.split(" "),
     key = rawContent[0],
     cmd = rawContent[1],
     args = rawContent.slice(2),
@@ -23,9 +23,9 @@ export default async function (client, message) {
   // Check if message is not in guild
   if (!message.guild) return;
 
-  let guild = await findGuild(message.guild.id);
+  const guild = await findGuild(message.guild.id);
 
-  let prefix = guild?.prefix || process.env.PREFIX || "mkx";
+  const prefix = guild?.prefix || process.env.PREFIX || "mkx";
 
   // Help info
   if (message.content.match(new RegExp(`^<@!?${client.user.id}>( |)$`)))
@@ -35,7 +35,7 @@ export default async function (client, message) {
   if (key.toString().toLowerCase() !== prefix || !cmd) return;
 
   // Searching command
-  let command =
+  const command =
     client.commands.get(cmd.toString().toLowerCase()) ||
     client.commands.get(client.aliases.get(cmd.toString().toLowerCase()));
 

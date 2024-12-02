@@ -8,7 +8,7 @@ export const run = async (client, { interaction, options }) => {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     interaction.reply("Fetching data ke gemini");
-    let prompt = options.get("query"),
+    const prompt = options.get("query"),
       res = await model.generateContent(prompt.value);
 
     await interaction.editReply(res.response.text());

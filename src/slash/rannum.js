@@ -1,10 +1,10 @@
 import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 
 export const run = (client, { interaction, options }) => {
-  let max = options.getInteger("max") || 0,
+  const max = options.getInteger("max") || 0,
     min = options.getInteger("min") || 0;
 
-  let emb = new EmbedBuilder()
+  const emb = new EmbedBuilder()
     .setTitle("Random Number Generator")
     .setDescription(
       `Angka yang didapat ${Math.floor(Math.random() * max + min)}`

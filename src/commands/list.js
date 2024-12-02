@@ -1,7 +1,7 @@
 import { EmbedBuilder } from "discord.js";
 
 export const run = (client, { msg }) => {
-  let emb = new EmbedBuilder()
+  const emb = new EmbedBuilder()
     .setTitle("Daftar Perintah")
     .setDescription(
       `${[...client.commands.keys()]

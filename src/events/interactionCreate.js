@@ -4,7 +4,7 @@ export default async (client, interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
   // Destructuring interaction
-  let cmd = interaction.commandName,
+  const cmd = interaction.commandName,
     options = interaction.options,
     gd = await client.guilds.fetch(interaction.guild?.id),
     user = await gd.members.fetch(interaction.user.id);
@@ -16,7 +16,7 @@ export default async (client, interaction) => {
   */
 
   // Find command
-  let command = client.slashes.get(cmd);
+  const command = client.slashes.get(cmd);
 
   if (!command) return;
 

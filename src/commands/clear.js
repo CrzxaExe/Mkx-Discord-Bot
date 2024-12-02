@@ -1,5 +1,5 @@
 export const run = async (client, { msg, args }) => {
-  let count = Number(args[0]) || 1;
+  const count = Number(args[0]) || 1;
   for (let i = 0; i < count; i++) {
     try {
       await msg.bulkDelete(1);

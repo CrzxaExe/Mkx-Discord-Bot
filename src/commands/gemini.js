@@ -7,7 +7,7 @@ export const run = async (client, { msg, args }) => {
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    let prompt = args.join(" "),
+    const prompt = args.join(" "),
       res = await model.generateContent(prompt);
 
     sendPartial(msg, { text: res.response.text(), prompt });

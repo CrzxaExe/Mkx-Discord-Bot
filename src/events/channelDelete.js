@@ -2,11 +2,11 @@ import { EmbedBuilder } from "discord.js";
 import { findGuild } from "../utils/guild";
 
 export default async function (client, channel) {
-  let guild = await findGuild(channel.guild.id); // Find guild in database
+  const guild = await findGuild(channel.guild.id); // Find guild in database
 
   if (!guild?.modChannel) return;
 
-  let mod = await client.channels.fetch(guild.modChannel);
+  const mod = await client.channels.fetch(guild.modChannel);
 
   if (!mod) return;
 

@@ -3,7 +3,7 @@ import { findGuild } from "../utils/guild";
 
 export default async function (client, oldMessage, newMessage) {
   // Find guild in database
-  let guild = await findGuild(newMessage.guild.id);
+  const guild = await findGuild(newMessage.guild.id);
 
   if (!guild?.modChannel) return; // If there is no moderator channel id in database, not will send anything
 
