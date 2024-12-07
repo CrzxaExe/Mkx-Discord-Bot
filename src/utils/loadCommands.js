@@ -1,15 +1,23 @@
+import { consoleTime, errorF } from "./console";
 import fs from "fs";
 
 export default async (client) => {
   // Get command folder
   fs.readdir("./src/commands/", (err, files) => {
     if (err)
-      return console.error("[System] No folder named commands in src", err);
+      return console.log(
+        errorF("[System" + consoleTime() + "]") +
+          " No folder named commands in src",
+        err
+      );
 
     // Filter files on command folder
     const cmds = files.filter((e) => e.split(".")[1] === "js");
 
-    if (!cmds[0]) return console.error("[System] No file on commands folder");
+    if (!cmds[0])
+      return console.log(
+        errorF("[System" + consoleTime() + "]") + " No file on commands folder"
+      );
     cmds.forEach(async (cmd) => {
       // Get file
       let pull = await import(`../commands/${cmd}`);

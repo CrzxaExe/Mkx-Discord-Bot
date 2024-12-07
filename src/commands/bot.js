@@ -4,14 +4,14 @@ import {
   ButtonStyle,
   EmbedBuilder,
 } from "discord.js";
-import pks from "../../package.json";
 import { findGuild } from "../utils/guild";
+import pks from "../../package.json";
 import ms from "pretty-ms";
 
 export const run = async (client, { msg, message }) => {
   const guild = await findGuild(message.guild.id);
 
-  let emb = new EmbedBuilder()
+  const emb = new EmbedBuilder()
     .setTitle(
       client.user.globalName ? client.user.globalName : client.user.username
     )

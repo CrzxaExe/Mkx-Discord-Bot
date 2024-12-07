@@ -1,7 +1,8 @@
 import { Client, Collection, GatewayIntentBits } from "discord.js";
+import { actionF, consoleTime } from "./utils/console.js";
 import mongoose from "mongoose";
-
 import loadEvents from "./utils/loadEvents.js";
+
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Main File Process
@@ -22,7 +23,11 @@ export default class AppClient extends Client {
     // Connect to mongodb, please check your database
     mongoose
       .connect(process.env.MONGODB)
-      .then((connected) => console.log("[System] Connected to Database")),
+      .then((connected) =>
+        console.log(
+          actionF("[System" + consoleTime() + "]") + " Connected to Database"
+        )
+      ),
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

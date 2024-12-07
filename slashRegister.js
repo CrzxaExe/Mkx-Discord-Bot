@@ -1,4 +1,5 @@
 import { REST, Routes } from "discord.js";
+import { consoleTime, errorF, normalF } from "./src/utils/console";
 import fs from "fs/promises";
 import dotenv from "dotenv";
 
@@ -16,7 +17,7 @@ async function load(dir) {
 
     return out;
   } catch (err) {
-    console.log(err);
+    console.log(errorF("[System]") + " Error load slash command =>" + err);
   }
 }
 
@@ -25,13 +26,18 @@ const rest = new REST().setToken(process.env.BOT_TOKEN);
 load("./src/slash")
   .then(async (e) => {
     try {
-      console.log("[System] Start to refresh");
+      console.log(
+        normalF("[System" + consoleTime() + "]") + " Start to refresh"
+      );
 
       await rest.put(Routes.applicationCommands(process.env.BOT_CLIENT), {
         body: e,
       });
 
-      console.log("[System] Successfully reloaded application (/) commands.");
+      console.log(
+        normalF("[System" + consoleTime() + "]") +
+          " Successfully reloaded application (/) commands."
+      );
     } catch (err) {
       console.log(err);
     }

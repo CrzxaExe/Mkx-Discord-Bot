@@ -1,3 +1,4 @@
+import { consoleTime, errorF } from "./console";
 import fs from "fs";
 
 export default class loadEvents {
@@ -22,7 +23,11 @@ export default class loadEvents {
         // Binding the event
         this.client.on(name, event.bind(null, this.client));
       } catch (err) {
-        console.error("[System] Error on load some command ", err);
+        console.log(
+          errorF("[System" + consoleTime() + "]") +
+            " Error on load some command ",
+          err
+        );
       }
     }
   }

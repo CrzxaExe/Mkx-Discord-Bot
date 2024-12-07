@@ -1,14 +1,26 @@
-import { ActivityType } from "discord.js";
+import { ActivityType, PresenceUpdateStatus } from "discord.js";
+import { consoleTime, normalF, restrictF } from "../utils/console";
 
 export default async function (client, messages) {
   // Loging if program connect to discord bot
   console.log(
-    `[System] Logged and setting up as ${client.user.username}#${client.user.discriminator}.`
+    `${normalF(
+      "[System" + consoleTime() + "]"
+    )} Logged and setting up as ${restrictF(
+      client.user.username + "#" + client.user.discriminator
+    )}.`
   );
+
+  const activity = ["CrzxaExe3", "Kyle"];
 
   // Set bot status
   client.user.setPresence({
-    activities: [{ name: "CrzxaExe3", type: ActivityType.Listening }],
-    status: "online",
+    activities: [
+      {
+        name: activity[Math.floor(Math.random() * activity.length)],
+        type: ActivityType.Listening,
+      },
+    ],
+    status: PresenceUpdateStatus.Online,
   });
 }

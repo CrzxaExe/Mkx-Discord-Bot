@@ -1,9 +1,18 @@
+import { EmbedBuilder } from "discord.js";
 import { findGuild } from "../utils/guild";
 
 export default async function (client, oldUser, newUser) {
-  const guild = await findGuild(newUser.guild.id);
+  // console.log(oldUser);
+  const guild = await findGuild(newUser.id);
 
   if (!guild?.modChannel) return;
 
-  const channel = await client.channels.fetch(newUser.guild.id);
+  const channel = await client.channels.fetch(newUser.id);
+
+  const emb = new EmbedBuilder()
+    .setTitle(`${newUser.nickname || newUser.user.globalName}`)
+    .setDescription(`User update <@${newUser.id}>`)
+    .setFooter({ text: "MKx" });
+
+  channel.send({ embeds: [emb] });
 }

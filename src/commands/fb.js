@@ -1,5 +1,5 @@
-import axios from "axios";
 import { EmbedBuilder } from "discord.js";
+import axios from "axios";
 
 export const run = async (client, { msg, args }) => {
   try {
