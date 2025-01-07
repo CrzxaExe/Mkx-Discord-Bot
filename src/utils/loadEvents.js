@@ -1,4 +1,4 @@
-import { consoleTime, errorF } from "./console";
+import { actionF, consoleTime, errorF } from "./console";
 import fs from "fs";
 
 export default class loadEvents {
@@ -11,6 +11,13 @@ export default class loadEvents {
     const files = fs
       .readdirSync("./src/events")
       .filter((x) => x.endsWith(".js"));
+
+    console.log(
+      actionF("[System" + consoleTime() + "]") +
+        " Load " +
+        files.length +
+        " events"
+    );
 
     for (const file of files) {
       try {

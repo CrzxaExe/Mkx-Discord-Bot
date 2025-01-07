@@ -17,10 +17,10 @@ const client = new AppClient({
   disableMentions: "everyone",
 });
 
+process.stdout.write("\x1Bc");
+
 // Class method init
 client.setup();
-
-process.stdout.write("\x1Bc");
 
 // Logging an error
 process.on("uncaughtException", (error) => {

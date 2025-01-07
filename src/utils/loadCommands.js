@@ -18,6 +18,7 @@ export default async (client) => {
       return console.log(
         errorF("[System" + consoleTime() + "]") + " No file on commands folder"
       );
+
     cmds.forEach(async (cmd) => {
       // Get file
       let pull = await import(`../commands/${cmd}`);

@@ -13,7 +13,7 @@ export const run = async (client, { interaction, options }) => {
 
     await interaction.editReply(res.response.text());
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 

@@ -3,8 +3,6 @@ import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
 export const run = async (client, { interaction, options }) => {
   const user = await interaction.guild.members.fetch(options.getUser("target"));
 
-  console.log(user.roles.cache.map((e) => e.name));
-
   const data = new EmbedBuilder()
     .setTitle(`${user.nickname || user.user.globalName}`)
     .setDescription(

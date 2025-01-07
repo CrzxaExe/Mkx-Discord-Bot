@@ -1,4 +1,4 @@
-import { ActivityType, PresenceUpdateStatus } from "discord.js";
+import { ActivityType, PresenceUpdateStatus, Presence } from "discord.js";
 import { consoleTime, normalF, restrictF } from "../utils/console";
 
 export default async function (client, messages) {
@@ -11,7 +11,13 @@ export default async function (client, messages) {
     )}.`
   );
 
+  const guildCount = [...(await client.guilds.fetch())].length;
+
   const activity = ["CrzxaExe3", "Kyle"];
+
+  console.log(
+    normalF("[System" + consoleTime() + "]") + ` Setting ${guildCount} guilds`
+  );
 
   // Set bot status
   client.user.setPresence({

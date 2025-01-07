@@ -18,6 +18,7 @@ export default async (client) => {
       return console.log(
         errorF("[System" + consoleTime() + "]") + " No file in slash folder "
       );
+
     slashes.forEach(async (slash) => {
       // Get file
       let pull = await import(`../slash/${slash}`);
