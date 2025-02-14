@@ -34,6 +34,7 @@ export const config = {
       name: "channel",
       description: "Channel yang akan dituju",
       type: ApplicationCommandOptionType.Channel,
+      channel_types: [2],
     },
   ],
 };

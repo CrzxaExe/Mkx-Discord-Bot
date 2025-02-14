@@ -14,7 +14,7 @@ import ms from "pretty-ms";
 
 export const run = async (client, { interaction, options }) => {
   const guild = await findGuild(interaction.guild.id),
-    query = options.get("query")?.value,
+    query = options.get("action")?.value,
     query2 = options.get("query2")?.value,
     query3 = options.get("query3")?.value ?? "";
 
@@ -90,8 +90,8 @@ export const config = {
   description: "Status bot",
   options: [
     {
-      name: "query",
-      description: "Kueri",
+      name: "action",
+      description: "Aksi",
       type: ApplicationCommandOptionType.Integer,
       choices: [
         {

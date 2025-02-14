@@ -1,7 +1,7 @@
-import { ActivityType, PresenceUpdateStatus, Presence } from "discord.js";
+import { ActivityType, PresenceUpdateStatus } from "discord.js";
 import { consoleTime, normalF, restrictF } from "../utils/console";
 
-export default async function (client, messages) {
+export default async function (client) {
   // Loging if program connect to discord bot
   console.log(
     `${normalF(
@@ -13,7 +13,7 @@ export default async function (client, messages) {
 
   const guildCount = [...(await client.guilds.fetch())].length;
 
-  const activity = ["CrzxaExe3", "Kyle"];
+  const activity = ["CrzxaExe3", "Crzx"];
 
   console.log(
     normalF("[System" + consoleTime() + "]") + ` Setting ${guildCount} guilds`
@@ -25,6 +25,17 @@ export default async function (client, messages) {
       {
         name: activity[Math.floor(Math.random() * activity.length)],
         type: ActivityType.Listening,
+        state: "with Crzx",
+        details: "Test",
+        assets: {
+          largeImage: "for1",
+          largText: "Testing",
+          smallImage: "for1",
+          smallText: "test",
+        },
+        buttons: [
+          { label: "Visit", url: "https://zxra-create.vercel.app/projects/" },
+        ],
       },
     ],
     status: PresenceUpdateStatus.Online,
