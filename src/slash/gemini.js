@@ -1,19 +1,22 @@
 import { ApplicationCommandOptionType } from "discord.js";
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
+import axios from "axios";
 
 export const run = async (client, { interaction, options }) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
-    interaction.reply("Fetching data ke gemini");
+    interaction.reply("Fetching data ke api");
     const prompt = options.get("query"),
-      res = await model.generateContent(prompt.value);
+      res = await axios.post(
+        process.env.REST + "gemini?key=" + process.env.APIKEY,
+        {
+          prompt: prompt.value,
+        }
+      );
 
-    await interaction.editReply(res.response.text());
+    await interaction.editReply(res.data.result);
   } catch (err) {
     console.error(err);
+
+    await interaction.editReply("Error saat fetching data ke API");
   }
 };
 

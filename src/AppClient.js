@@ -25,7 +25,9 @@ export default class AppClient extends Client {
       .connect(process.env.MONGODB)
       .then((connected) =>
         console.log(
-          actionF("[System" + consoleTime() + "]") + " Connected to Database"
+          actionF("[System" + consoleTime() + "]") +
+            " Connected to Database" +
+            connected
         )
       ),
       {
