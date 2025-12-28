@@ -1,14 +1,14 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { EmbedBuilder } from "discord.js";
-
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
 
 export const run = async (client, { msg, args }) => {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-
     const prompt = args.join(" "),
-      res = await model.generateContent(prompt);
+      res = await axios.post(
+        process.env.REST + "gemini?key=" + process.env.APIKEY,
+        {
+          prompt: prompt.value,
+        }
+      );
 
     sendPartial(msg, { text: res.response.text(), prompt });
   } catch (err) {

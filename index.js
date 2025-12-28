@@ -2,6 +2,7 @@ import { GatewayIntentBits } from "discord.js";
 import { consoleTime, errorF } from "./src/utils/console.js";
 import AppClient from "./src/AppClient.js";
 import dotenv from "dotenv";
+import express from "express";
 
 // Setup Env
 dotenv.config();
@@ -21,6 +22,10 @@ process.stdout.write("\x1Bc");
 
 // Class method init
 client.setup();
+
+const server = express().listen(3000, () =>
+  console.log("[System" + consoleTime() + "] Start server")
+);
 
 // Logging an error
 process.on("uncaughtException", (error) => {
