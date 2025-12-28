@@ -7,8 +7,8 @@ import {
   ActivityType,
   PresenceUpdateStatus,
 } from "discord.js";
-import { findGuild, updateGuild } from "../utils/guild";
-import { consoleTime, restrictF } from "../utils/console";
+import { findGuild, updateGuild } from "../utils/guild.js";
+import { consoleTime, restrictF } from "../utils/console.js";
 import pks from "../../package.json";
 import ms from "pretty-ms";
 

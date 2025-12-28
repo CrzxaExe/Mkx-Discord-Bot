@@ -4,7 +4,7 @@ import {
   ButtonStyle,
   EmbedBuilder,
 } from "discord.js";
-import { findGuild } from "../utils/guild";
+import { findGuild } from "../utils/guild.js";
 import pks from "../../package.json";
 import ms from "pretty-ms";
 

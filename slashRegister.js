@@ -1,5 +1,5 @@
 import { REST, Routes } from "discord.js";
-import { consoleTime, errorF, normalF } from "./src/utils/console";
+import { consoleTime, errorF, normalF } from "./src/utils/console.js";
 import fs from "fs/promises";
 import dotenv from "dotenv";
 

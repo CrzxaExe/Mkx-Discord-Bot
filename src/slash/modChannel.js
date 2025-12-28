@@ -1,5 +1,5 @@
 import { ApplicationCommandOptionType, EmbedBuilder } from "discord.js";
-import { findGuild, updateGuild } from "../utils/guild";
+import { findGuild, updateGuild } from "../utils/guild.js";
 
 export const run = async (client, { interaction, options }) => {
   const guild = await findGuild(interaction.guild.id),

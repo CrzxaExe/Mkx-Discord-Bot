@@ -1,4 +1,4 @@
-import { consoleTime, errorF } from "./console";
+import { consoleTime, errorF } from "./console.js";
 import fs from "fs";
 
 export default async (client) => {

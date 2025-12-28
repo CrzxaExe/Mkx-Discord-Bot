@@ -1,4 +1,4 @@
-import { actionF, consoleTime, errorF } from "./console";
+import { actionF, consoleTime, errorF } from "./console.js";
 import fs from "fs";
 
 export default class loadEvents {

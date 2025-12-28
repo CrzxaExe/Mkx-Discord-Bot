@@ -1,5 +1,5 @@
 import { ActivityType, PresenceUpdateStatus } from "discord.js";
-import { consoleTime, normalF, restrictF } from "../utils/console";
+import { consoleTime, normalF, restrictF } from "../utils/console.js";
 
 export default async function (client) {
   // Loging if program connect to discord bot

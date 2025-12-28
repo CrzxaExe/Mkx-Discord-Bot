@@ -1,5 +1,5 @@
 import { EmbedBuilder } from "discord.js";
-import { updateGuild } from "../utils/guild";
+import { updateGuild } from "../utils/guild.js";
 
 export const run = async (client, { msg, message, args, user }) => {
   const prefix = args[0] || "mkx";

@@ -1,5 +1,5 @@
 import { EmbedBuilder } from "discord.js";
-import { findGuild } from "../utils/guild";
+import { findGuild } from "../utils/guild.js";
 
 export default async function (client, oldMember, newMember) {
   console.log("New Member ", newMember);

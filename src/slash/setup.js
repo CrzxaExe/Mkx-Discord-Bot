@@ -1,4 +1,4 @@
-import { findGuild } from "../utils/guild";
+import { findGuild } from "../utils/guild.js";
 
 export const run = async (client, { interaction }) => {
   const guild = await findGuild(interaction.guild.id);
